@@ -1,3 +1,7 @@
+const array = [];
+
+///////////////////////////////////////////////////////////////////
+// OBJECT CONSTRUCTOR FUNCTION
 class User {
   constructor(n, a) {
     this.name = n;
@@ -5,41 +9,39 @@ class User {
   }
 }
 
+///////////////////////////////////////////////////////////////////
+// MakeObj() & DisplayObjects() FUNCTIONS
+
 function makeObj() {
   const nameInput = document.getElementById("name");
   const ageInput = document.getElementById("age");
   const name = nameInput.value;
   const age = ageInput.value;
 
-  return new User(name, age);
+  const user = new User(name, age);
+  array.push(user);
+  console.log(array);
 }
 
-function displayObj(user) {
-  const output = document.getElementById("output");
-  output.innerHTML = `Name: ${user.name}<br>Age: ${user.age}`;
-}
-
-function displayObjects(user) {
+function displayObj(array) {
   const displayDiv = document.getElementById("display-div");
-  const userDiv = document.createElement("p");
-  userDiv.innerHTML = `Name: ${user.name}<br>Age: ${user.age}`;
-  displayDiv.appendChild(userDiv);
+  displayDiv.innerHTML = "";
+  array.forEach((user) => {
+    const userP = document.createElement("p");
+    userP.innerHTML = `Name: ${user.name}<br>Age: ${user.age}`;
+    displayDiv.appendChild(userP);
+  });
 }
 
+///////////////////////////////////////////////////////////////////
+// EVENT LISTENERS
 const makeButton = document.getElementById("make");
 makeButton.addEventListener("click", () => {
   makeObj();
 });
 
-// const displayButton = document.getElementById("display");
-// displayButton.addEventListener("click", () => {
-//   const user = makeObj();
-//   displayObj(user);
-// });
-
 const displayButton = document.getElementById("display");
 const displayDiv = document.getElementById("display-div");
 displayButton.addEventListener("click", () => {
-  const user = makeObj();
-  displayObjects(user);
+  displayObj(array);
 });
