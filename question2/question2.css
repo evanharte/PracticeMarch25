@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgb(0, 156, 204);
+  color: white;
+}
+
+nav {
+  background-color: #01012c;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  margin-left: 20px;
+}
